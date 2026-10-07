@@ -2,12 +2,12 @@ import React from 'react'
 import { Button, Checkbox, Form, Input } from 'antd';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Registration = () => {
+  let navigate=useNavigate()
+
      const onFinish = async values => {
-
-
     let data = await axios.post('http://localhost:3000/api/v1/authentication/registration', {
       username: values.username,
       email: values.email,
@@ -26,6 +26,12 @@ const Registration = () => {
   )
   if(data.data.success=="registration successfully"){
     toast.success("Registration Sussessfuly")
+    setInterval(() => {
+      navigate(`/otpverification/${data.data.email}`)
+      
+    }, 2000);
+  
+  
 
   }else if(data.data=="Data Already Existed"){
      toast.error("Data Already Existed")
@@ -34,8 +40,10 @@ const Registration = () => {
     toast.error("Valid Email Required")
 
   }
+  
    
     console.log(data.data);
+   
 
 
 
