@@ -27,7 +27,7 @@ const Registration = () => {
   if(data.data.success=="registration successfully"){
     toast.success("Registration Sussessfuly")
     setInterval(() => {
-      navigate(`/otpverification/${data.data.email}`)
+      navigate(`/login`)
       
     }, 2000);
   

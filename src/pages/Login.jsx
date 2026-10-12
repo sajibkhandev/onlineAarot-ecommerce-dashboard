@@ -20,7 +20,11 @@ const Login = () => {
       navigate("/home")
     } else if (data.data.error == "Invaild Creadiential") {
       toast.error("Invaild Creadiential");
-    } else{
+    }else if(data.data.error=="Email Verification Failed"){
+      toast.error("Email Verification Failed")
+    }
+    
+    else{
 
     }
     console.log(data.data);
