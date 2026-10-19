@@ -64,6 +64,7 @@ const Login = () => {
           Submit
         </Button>
       </Form.Item>
+       <p className="ml-45 mb-5"><Link className="text-black!" to="/forgetpassword"> Forget Password </Link></p>
        <p className="ml-28">Don't you have Account?<Link to="/"> SignUp </Link></p>
     </Form>
   );
