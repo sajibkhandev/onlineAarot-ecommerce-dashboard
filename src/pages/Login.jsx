@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from 'react-router-dom'
+import {useSelector,useDispatch} from 'react-redux'
+import { activeuserinfo } from "../slices/userInfoSlice";
 
 const Login = () => {
-  const navigate=useNavigate()
+  let dispatch=useDispatch()
+  let data= useSelector(state=>state.userinfo.value)
+  let navigate=useNavigate()
+
+   
+
+  
   const onFinish = async (values) => {
     let data = await axios.post(
       "http://localhost:3000/api/v1/authentication/login",
@@ -18,6 +26,8 @@ const Login = () => {
     if (data.data.success == "login successfully") {
       toast.success("Login Sussessfuly");
       navigate("/home")
+      dispatch(activeuserinfo(JSON.stringify(data.data)))
+
     } else if (data.data.error == "Invaild Creadiential") {
       toast.error("Invaild Creadiential");
     }else if(data.data.error=="Email Verification Failed"){
@@ -28,6 +38,7 @@ const Login = () => {
 
     }
     console.log(data.data);
+     
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
