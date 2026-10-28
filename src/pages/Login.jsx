@@ -25,7 +25,7 @@ const Login = () => {
 
     if (data.data.success == "login successfully") {
       toast.success("Login Sussessfuly");
-      navigate("/home")
+      navigate("/dashboard")
       dispatch(activeuserinfo(JSON.stringify(data.data)))
 
     } else if (data.data.error == "Invaild Creadiential") {
