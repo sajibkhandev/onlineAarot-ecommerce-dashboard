@@ -17,32 +17,7 @@ const items = [
     icon: <AppstoreOutlined />,
 
   },
-  {
-    key: 'sub2',
-    label: 'Product',
-    icon: <MailOutlined />,
-    children: [
-      { key: '/dashboard/createproduct', label: 'Create Product' },
-      { key: '/dashboard/viewproduct', label: 'View Product' },
-
-    ],
-  },
-  {
-    type: 'divider',
-  },
-  {
-    key: 'sub3',
-    label: 'Varient',
-    icon: <SettingOutlined />,
-    children: [
-      { key: '/dashboard/createvarient', label: 'Create Varient' },
-      { key: '/dashboard/viewvarient', label: 'View Varient' },
-    ],
-  },
-  {
-    type: 'divider',
-  },
-  {
+    {
     key: 'sub4',
     label: 'Category',
     icon: <SettingOutlined />,
@@ -68,6 +43,32 @@ const items = [
     type: 'divider',
   },
   {
+    key: 'sub2',
+    label: 'Product',
+    icon: <MailOutlined />,
+    children: [
+      { key: '/dashboard/createproduct', label: 'Create Product' },
+      { key: '/dashboard/viewproduct', label: 'View Product' },
+
+    ],
+  },
+  {
+    type: 'divider',
+  },
+  {
+    key: 'sub3',
+    label: 'Varient',
+    icon: <SettingOutlined />,
+    children: [
+      { key: '/dashboard/createvarient', label: 'Create Varient' },
+      { key: '/dashboard/viewvarient', label: 'View Varient' },
+    ],
+  },
+  {
+    type: 'divider',
+  },
+
+  {
     key: 'sub6',
     label: 'Discount',
     icon: <SettingOutlined />,
@@ -83,6 +84,8 @@ const Sideber = () => {
   let navigate = useNavigate()
     let dispatch=useDispatch()
   let data = useSelector(state => state.userinfo.value)
+  console.log(data.username);
+  
 
   let handleLogOut = () => {
     dispatch(logout(JSON.stringify(data.data)))
@@ -110,7 +113,7 @@ const Sideber = () => {
         <div className='flex items-center gap-x-2'>
           <div className='w-11  h-11 border border-red-300 rounded-full'></div>
           <div>
-            <h3 className=' font-semibold'>Sajib Khan</h3>
+            <h3 className=' font-semibold'>{data.username}</h3>
             <p>User</p>
           </div>
 
