@@ -2,11 +2,21 @@ import React from 'react'
 import { Button, Checkbox, Form, Input } from "antd";
 import axios from 'axios'
 import toast, { Toaster } from "react-hot-toast";
+import { useSelector } from 'react-redux'
 
 const CreateCategory = () => {
+
+ let userinfo=useSelector(state=>state.userinfo.value)
+ 
+
+ 
+
+
+
   const onFinish = async (values) => {
     let data = await axios.post("http://localhost:3000/api/v1/product/createcategory", {
-      categoryname: values.categoryname
+      categoryname: values.categoryname,
+      categoryowerid:userinfo.id
 
     })
     if (data.data.success == "Category Created") {
